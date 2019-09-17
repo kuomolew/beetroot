@@ -7,9 +7,9 @@ body {
 
 .main {
     background-color: #3398cc;
-    border: 15px solid #2b80ac;
+    border: 20px solid #2b80ac;
     margin: 0;
-    height: 96.8vh;
+    height: 96.2vh;
 }
 
 main {
@@ -27,6 +27,15 @@ ul {
     margin-top: 40px;
     font-size: 0px;
     border: 3px solid white;
+    background-color: white;
+}
+
+ul:hover li {
+    opacity: 0.6;
+}
+
+li:hover {
+    opacity: 1.0 !important;
 }
 
 li {
@@ -58,4 +67,48 @@ li > p {
 .footer > p {
     padding-top: 30px;
     font-weight: bolder;
-} 
+}
+
+.lisbon {
+    background-color: #3398cc;
+}
+
+.paris {
+    background-color: #39cccc;
+}
+
+.belgrade {
+    background-color: #996598;
+}
+
+.moscow {
+    background-color: #c24646;
+}
+
+.tel-aviv {
+    background-color: #e2674a;
+}
+
+.cairo {
+    background-color: #fccc66;
+}
+
+.new-york {
+    background-color: #99cc99;
+}
+
+.new-dehli {
+    background-color: #669998;
+}
+
+.san-francisco {
+    background-color: #cc6698;
+}
+
+.tokyo {
+    background-color: #339866;
+}
+
+.sydney {
+    background-color: #656599;
+}
