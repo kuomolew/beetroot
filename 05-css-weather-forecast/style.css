@@ -1,6 +1,8 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    color: white;
 }
 
 .main {
@@ -9,3 +11,51 @@ body {
     margin: 0;
     height: 96.8vh;
 }
+
+main {
+    width: 70%;
+    padding: 0;
+    margin-left:  auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 40px;
+    font-size: 0px;
+    border: 3px solid white;
+}
+
+li {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 25%;
+    height: 150px;
+    border: 3px solid white;
+    font-size: 24px;
+    vertical-align: top;
+}
+
+.half {
+    width: 50%;
+}
+
+.full {
+    width: 100%;
+}
+
+li > p {
+    text-align: center;
+    bottom: 20px;
+    margin-top: 28px;
+}
+
+.footer > p {
+    padding-top: 30px;
+    font-weight: bolder;
+} 
