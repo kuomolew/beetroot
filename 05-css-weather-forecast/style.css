@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    background-color: #3398cc;
+    border: 15px solid #2b80ac;
+    margin: 0;
+    height: 96.8vh;
+}
