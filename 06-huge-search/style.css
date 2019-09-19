@@ -43,12 +43,12 @@ button {
     display: inline-block;
     padding: 0;
     border: none;
+    position: absolute;
     height: 80px;
     width: 80px;
-    background-color: inherit;
+    background: transparent url(img/magnifier.svg);
     /* float: right; */
-    margin-left: auto;
-    margin-right: 0;
+    /* transition: all .3s ease-out; */
 }
 
 .column {
