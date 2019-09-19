@@ -1,9 +1,10 @@
-* {
+/* * {
     transition: all .1s ease-in;
-}
+} */
 
 body {
     padding: 10px;
+    height: 100vh;
 }
 
 header {
@@ -69,7 +70,7 @@ label:hover {
     cursor: pointer;
 }
 
-input[type="checkbox"]:checked + label {
+input:checked + label {
     color: #b8b8d0;
     text-decoration: line-through;
 }
