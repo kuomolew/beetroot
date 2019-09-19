@@ -15,7 +15,7 @@ header {
 main {
     display: inline-block;
     background-color: #3b3e45;
-    position: relative;
+    /* position: relative; */
     height: 650px;
     width: 100%;
 }
@@ -90,7 +90,7 @@ span::after {
 .footer {
     background-color: #4a4f55;
     position: relative;
-    display: block;
+    display: table;
     width: 60%;
     height: 70px;
     margin: auto;
@@ -99,7 +99,6 @@ span::after {
 
 .footer p {
     width: 100%;
-    position: absolute;
     text-align: center;
     color: #e97f81;
     font-family:  'Trebuchet MS', Trebuchet, sans-serif;
