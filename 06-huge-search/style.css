@@ -2,7 +2,7 @@ body {
     background-color: #f1f1f1;
     font-family: Arial, sans-serif;
 }
-/* #c1c1c1 */
+
 main {
     padding-top: 48px;
     width: 80%;
@@ -19,9 +19,9 @@ form {
     border: none;
     background-color: inherit;
     color: #c1c1c1;
-    font-size: 80px;
+    font-size: 100px;
     font-weight: bold;
-    width: 90%;
+    width: 92%;
 }
 
 ::placeholder,
@@ -46,9 +46,7 @@ button {
     position: absolute;
     height: 80px;
     width: 80px;
-    background: transparent url(img/magnifier.svg);
-    /* float: right; */
-    /* transition: all .3s ease-out; */
+    background: url(img/magnifier.svg);
 }
 
 .column {
