@@ -47,7 +47,7 @@ button {
     position: absolute;
     height: 80px;
     width: 80px;
-    background: url(img/magnifier.svg);
+    background: url(../img/magnifier.svg);
     outline: none;
 }
 
