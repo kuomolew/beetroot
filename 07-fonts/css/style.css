@@ -1,0 +1,145 @@
+@font-face {
+    font-family: 'Proxima Nova Regular';
+    src: url(../fonts/ProximaNova/Proxima\ Nova\ Regular.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaPT Heavy';
+    src: url(../fonts/FuturaPT-Heavy/FuturaPT-Heavy.woff);
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    background-color: #444d52;
+    margin: 0px;
+}
+
+.main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #181818;
+    display: block;
+    width: 876px;
+    height: 187px;
+    margin-top: 47px;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+header h3 {
+    color: #777777;
+    font-family: 'Proxima Nova Regular';
+    padding: 50px 0 0 64px;
+    text-transform: uppercase;
+    font-size: 15px;
+    margin: 0;
+    letter-spacing: 0.32em;
+    line-height: 13px;
+}
+
+header h1 {
+    color: #fefefe;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0 0 0 64px;
+}
+
+.gray-line {
+    background-color: #303030;
+    height: 3px;
+    width: 812px;
+    margin-left: 64px;
+    margin-top: 18px;
+}
+
+.input {
+    display: flex;
+    background-color: #f8bd2c;
+    width: 820px;
+    height: 75px;
+    margin-right: 0;
+    margin-left: auto;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+main {
+    position: absolute;
+    background-color: #ffffff;
+    width: 1060px;
+    top: 161px;
+    z-index: -1;
+    height: 100%;
+}
+
+.document-line {
+    float: left;
+    margin: 0 56px 0 67px;
+    background-color: #e8eced;
+    width: 2px;
+    height: 100%;
+}
+
+.author {
+    position: relative;
+    margin: 203px 0 0 0;
+    color: #b5b5b5;
+    font-family: 'Proxima Nova Regular';
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 0.22em;
+}
+
+.article-title {
+    margin: 0;
+    font-family: 'FuturaPT Heavy';
+    text-transform: uppercase;
+    font-size: 78px;
+    letter-spacing: 0.053em;
+    color: #2a2a2a;
+    padding-top: 40px;
+    line-height: 74px;
+}
+
+.article-subtitle {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 30px;
+    color: #8f8f8f;
+    margin: 0;
+    line-height: 63px;
+    font-weight: 300;
+}
+
+main p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-size: 27px;
+    line-height: 40px;
+    color: #000000;
+    width: calc(100% - 130px);
+    text-align: justify;
+}
+
+.format-image {
+    display: flex;
+    align-items: center;
+    margin: auto 11px;
+    height: 37px;
+    width: 38px;
+}
+
+.format-image:nth-child(1) {
+    margin-left: 42px;
+}
+
+
+
