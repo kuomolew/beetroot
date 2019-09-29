@@ -1,0 +1,91 @@
+body {
+    background-color: aqua;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    position: relative;
+    border: 2px solid brown;
+    width: 800px;
+    height: 800px;
+    margin: 10px auto 0 auto;
+}
+
+section {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100px;
+    height: 800px;
+    background-color: blueviolet;
+}
+
+section:nth-of-type(2) {
+    margin-left: 100px;
+}
+
+section:nth-of-type(3) {
+    margin-left: 200px;
+}
+
+section:nth-of-type(4) {
+    margin-left: 300px;
+}
+
+section:nth-of-type(5) {
+    margin-left: 400px;
+}
+
+section:nth-of-type(6) {
+    margin-left: 500px;
+}
+
+section:nth-of-type(7) {
+    margin-left: 600px;
+}
+
+section:nth-of-type(8) {
+    margin-left: 700px;
+}
+
+div {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+}
+
+div:nth-of-type(2) {
+    margin-top: 100px;
+}
+
+div:nth-of-type(3) {
+    margin-top: 200px;
+}
+
+div:nth-of-type(4) {
+    margin-top: 300px;
+}
+
+div:nth-of-type(5) {
+    margin-top: 400px;
+}
+
+div:nth-of-type(6) {
+    margin-top: 500px;
+}
+
+div:nth-of-type(7) {
+    margin-top: 600px;
+}
+
+div:nth-of-type(8) {
+    margin-top: 700px;
+}
+
+section:nth-of-type(odd) div:nth-of-type(even),
+section:nth-of-type(even) div:nth-of-type(odd) {
+    background-color: inherit;
+}
+
