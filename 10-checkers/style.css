@@ -17,7 +17,7 @@ section {
     box-sizing: border-box;
     width: 100px;
     height: 800px;
-    background-color: blueviolet;
+    background-color: brown;
 }
 
 section:nth-of-type(2) {
