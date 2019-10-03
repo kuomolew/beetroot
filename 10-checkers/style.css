@@ -6,10 +6,11 @@ body {
 
 main {
     position: relative;
+    float: left;
     border: 2px solid brown;
     width: 800px;
     height: 800px;
-    margin: 10px auto 0 auto;
+    margin: 10px auto 0 3px;
 }
 
 section {
@@ -17,7 +18,7 @@ section {
     box-sizing: border-box;
     width: 100px;
     height: 800px;
-    background-color: brown;
+    background-color: rgb(58, 40, 6);
 }
 
 section:nth-of-type(2) {
@@ -53,7 +54,7 @@ div {
     box-sizing: border-box;
     width: 100px;
     height: 100px;
-    background-color: white;
+    background-color: rgb(172, 182, 148);
 }
 
 div:nth-of-type(2) {
@@ -89,3 +90,24 @@ section:nth-of-type(even) div:nth-of-type(odd) {
     background-color: inherit;
 }
 
+img {
+    float: right;
+    margin: 20px 20px 20px auto;
+}
+
+aside {
+    float: right;
+    border: 2px solid brown;
+    width: calc(100% - 850px);
+    height: 800px;
+    margin: 10px 3px 0 auto;
+}
+
+h1 {
+    color: red;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
