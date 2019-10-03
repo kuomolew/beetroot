@@ -54,7 +54,6 @@ let dataController = (function() {
             posblXindex = posblYindex = posblYindexTwo =  -1;
             xIndex = Number(position[0]);
             yIndex = Number(position[1]);
-            console.log(position, xIndex, yIndex, posblXindex, posblYindex);
 
             if (xIndex > 0) {
                 posblXindex = xIndex - 1;
@@ -120,7 +119,7 @@ let dataController = (function() {
 
         showMovesWhite: function() {
             possibleMovesWhite(dataBase);
-            // console.log(dataBase.posblMoves);
+            console.log(dataBase.posblMoves);
         },
 
         showLegalMovies: function() {
@@ -215,7 +214,7 @@ let controller = (function(dataCtrl, UICtrl) {
         let db = dataCtrl.getDataBase();
         UICtrl.displayInitialPosition(db.black);
         UICtrl.displayInitialPosition(db.white);
-        console.log(db);
+        // console.log(db);
         UICtrl.hideElement(DOM.startButton);
         UICtrl.showElement(DOM.restartButton);
         UICtrl.showElement(DOM.clearButton);
