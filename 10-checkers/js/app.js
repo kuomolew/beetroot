@@ -11,7 +11,7 @@ let dataController = (function() {
         //All theoretical moves for active player, without calculating of position of another chekers on the board
         posblMoves: {},
 
-        //Legal moves for active player where key is current position, value - possible moves
+        //Legal moves for active player where key is current position, values - possible moves
         legalMoves: {}
     };
 
@@ -47,8 +47,6 @@ let dataController = (function() {
         dataBase.white.push('white');
     };
 
-    //Storing possible moves for the players
-    // let posblMoves = {};
 
     //Cheking possible moves for the white one
     let possibleMovesWhite = function(db) {
@@ -107,27 +105,42 @@ let dataController = (function() {
     };
 
     let movingEventsListener = function() {
-        var chosenID;
+        var chosenID, prevChosenID, targetID, selectedID;
+        
+        
+        // Listener for identification of chosen checker
         document.querySelector('#board').addEventListener('click', function(e){  
-            chosenID = e.target.closest('div').id;
-            // console.log(chosenID);
-            chosenID = chosenID.slice(3);
-            // console.log(chosenID);
-
             let legalInitialPositions = [];
+            let legalTargetPositions = [];
+            prevChosenID = chosenID;
+            chosenID = e.target.closest('div').id;
+            chosenID = chosenID.slice(3);
+            
+
+            
             for (key in dataBase.legalMoves) {
                 legalInitialPositions.push(key);
-                // console.log(legalInitialPositions);
+               
             }
 
-            // console.log(legalInitialPositions);
+
             if(chosenID) {
-                console.log(chosenID);
-                console.log(legalInitialPositions);
                 if (legalInitialPositions.includes(chosenID)) {
-                    console.log('Move is possible');
+                    selectedID = chosenID;
+                    // Listener for identification of cell to move in
+                    document.querySelector('#board').addEventListener('click', function(f) {
+                        targetID = f.target.closest('div').id;
+                        targetID = targetID.slice(3);
+                        legalTargetPositions = dataBase.legalMoves[prevChosenID];
+                        if (legalTargetPositions.includes(targetID) && legalInitialPositions.includes(selectedID)) {
+                            legalTargetPositions = [];
+                            console.log('move!!!!!!!!');
+                            
+                        }
+                    });
+                    
                 } else {
-                    console.log('Move is impossible');
+                    // console.log('Move is impossible');
                 }
                 
 
@@ -244,6 +257,7 @@ let UIController = (function() {
 //Global app controller
 let controller = (function(dataCtrl, UICtrl) {
     let DOM = UICtrl.getDOMstrings();
+    let db = dataCtrl.getDataBase();
 
     let moveBegin = function (id) {
         console.log('move on ' + id);
@@ -261,7 +275,6 @@ let controller = (function(dataCtrl, UICtrl) {
     let startGame = function() {
         
         dataCtrl.setInitialArrangement();
-        let db = dataCtrl.getDataBase();
         UICtrl.displayInitialPosition(db.black);
         UICtrl.displayInitialPosition(db.white);
         // console.log(db);
@@ -307,4 +320,3 @@ controller.init();
 // UIController.displayInitialPosition(db.white);
 
 // console.log(db);
-
