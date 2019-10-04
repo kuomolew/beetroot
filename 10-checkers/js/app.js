@@ -3,10 +3,15 @@ let dataController = (function() {
 
     //Position of all chekers on the board
     let dataBase = {
+        //Positions of black and white chekers
         black: [],
         white: [],
         activePlayer: 'white',
+
+        //All theoretical moves for active player, without calculating of position of another chekers on the board
         posblMoves: {},
+
+        //Legal moves for active player where key is current position, value - possible moves
         legalMoves: {}
     };
 
@@ -100,6 +105,43 @@ let dataController = (function() {
         }
         
     };
+
+    let movingEventsListener = function() {
+        var chosenID;
+        document.querySelector('#board').addEventListener('click', function(e){  
+            chosenID = e.target.closest('div').id;
+            // console.log(chosenID);
+            chosenID = chosenID.slice(3);
+            // console.log(chosenID);
+
+            let legalInitialPositions = [];
+            for (key in dataBase.legalMoves) {
+                legalInitialPositions.push(key);
+                // console.log(legalInitialPositions);
+            }
+
+            // console.log(legalInitialPositions);
+            if(chosenID) {
+                console.log(chosenID);
+                console.log(legalInitialPositions);
+                if (legalInitialPositions.includes(chosenID)) {
+                    console.log('Move is possible');
+                } else {
+                    console.log('Move is impossible');
+                }
+                
+
+
+
+
+            }
+
+
+
+
+          });
+        
+    };
     
     return {
         // Setting initial position for the game start in the database
@@ -117,14 +159,18 @@ let dataController = (function() {
             dataBase.activePlayer === 'white'? dataBase.activePlayer = 'black' : dataBase.activePlayer = 'white';
         },
 
-        showMovesWhite: function() {
+        calculateMovesWhite: function() {
             possibleMovesWhite(dataBase);
-            console.log(dataBase.posblMoves);
+            // console.log(dataBase.posblMoves);
         },
 
-        showLegalMovies: function() {
+        calculateLegalMovies: function() {
             checkLegalMovies(dataBase);
-            console.log(dataBase.legalMoves);
+            // console.log(dataBase.legalMoves);
+        },
+
+        movingEventsListen: function() {
+            movingEventsListener();
         },
 
         testing: function() {
@@ -199,8 +245,12 @@ let UIController = (function() {
 let controller = (function(dataCtrl, UICtrl) {
     let DOM = UICtrl.getDOMstrings();
 
+    let moveBegin = function (id) {
+        console.log('move on ' + id);
+    }
+
     // Awaiting listeners for buttons pushing
-    let setupIventsListener = function() {
+    let setupEventsListener = function() {
         
         document.getElementById(DOM.startButton).addEventListener('click', startGame);
         document.getElementById(DOM.restartButton).addEventListener('click', restartGame);
@@ -218,8 +268,9 @@ let controller = (function(dataCtrl, UICtrl) {
         UICtrl.hideElement(DOM.startButton);
         UICtrl.showElement(DOM.restartButton);
         UICtrl.showElement(DOM.clearButton);
-        dataCtrl.showMovesWhite();
-        dataCtrl.showLegalMovies();
+        dataCtrl.calculateMovesWhite();
+        dataCtrl.calculateLegalMovies();
+        dataCtrl.movingEventsListen();
     }
 
     // Reloading the page
@@ -230,10 +281,13 @@ let controller = (function(dataCtrl, UICtrl) {
     return {
         init: function() {
             console.log('It\'s alive...');
-            setupIventsListener();
+            setupEventsListener();
+        }, 
+
+        // movingListener: function() {
+        //     console.log('movingListener on');
             
-            
-        }
+        // }
 
     }
 
@@ -242,6 +296,7 @@ let controller = (function(dataCtrl, UICtrl) {
 
 
 controller.init();
+// controller.movingListener();
 
 // dataController.setInitialArrangement();
 // // dataController.testing();
