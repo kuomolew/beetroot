@@ -170,6 +170,9 @@ let dataController = (function() {
 
         //Changing cheker's positions inside of database
         dataBaseMove: function (a, b) {
+            dataBase.posblMoves = {};
+            dataBase.legalMoves = {};
+
             let checkers = dataBase[dataBase.activePlayer];
             checkers.splice(checkers.indexOf(a), 1);
             checkers.push(b);
