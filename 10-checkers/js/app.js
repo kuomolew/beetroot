@@ -106,41 +106,75 @@ let dataController = (function() {
 
     let movingEventsListener = function() {
         var chosenID, prevChosenID, targetID, selectedID;
-        
-        
+        let legalInitialPositions = [];
+        let legalTargetPositions = [];
+
+        selectedID = -1;
         // Listener for identification of chosen checker
         document.querySelector('#board').addEventListener('click', function(e){  
-            let legalInitialPositions = [];
-            let legalTargetPositions = [];
+            // let legalInitialPositions = [];
+            // let legalTargetPositions = [];
             prevChosenID = chosenID;
             chosenID = e.target.closest('div').id;
             chosenID = chosenID.slice(3);
             
-
             
+            console.log(`chosenID = ${chosenID}`);
+            console.log(`prevChosenID = ${prevChosenID}`);
+            console.log(`selectedID = ${selectedID}`);
+            // console.log(`targetID = ${targetID}`);
+            console.log(`legalTargetPositions = ${legalTargetPositions} _________________`);
+
+            if (legalTargetPositions.includes(chosenID) && legalInitialPositions.includes(selectedID)) {
+                console.log(`MOOOOOOOOOOOOOOVE`);
+            }
+
+
             for (key in dataBase.legalMoves) {
                 legalInitialPositions.push(key);
-               
             }
 
 
             if(chosenID) {
                 if (legalInitialPositions.includes(chosenID)) {
+                    console.log(`Move is possible`);
                     selectedID = chosenID;
-                    // Listener for identification of cell to move in
-                    document.querySelector('#board').addEventListener('click', function(f) {
-                        targetID = f.target.closest('div').id;
-                        targetID = targetID.slice(3);
-                        legalTargetPositions = dataBase.legalMoves[prevChosenID];
-                        if (legalTargetPositions.includes(targetID) && legalInitialPositions.includes(selectedID)) {
-                            legalTargetPositions = [];
-                            console.log('move!!!!!!!!');
+
+
+                    console.log(`chosenID = ${chosenID}`);
+                    console.log(`prevChosenID = ${prevChosenID}`);
+                    console.log(`selectedID = ${selectedID}`);
+                    // console.log(`targetID = ${targetID}`);
+                    console.log(`legalTargetPositions = ${legalTargetPositions} _________________`);
+                    if(prevChosenID){
+                        legalTargetPositions = dataBase.legalMoves[selectedID];
+                        // targetID = selectedID;
+                        console.log(`chosenID = ${chosenID}`);
+                        console.log(`prevChosenID = ${prevChosenID}`);
+                        console.log(`selectedID = ${selectedID}`);
+                        // console.log(`targetID = ${targetID}`);
+                        console.log(`legalTargetPositions = ${legalTargetPositions} _________________`);
+                        console.log(`______________________`);
+                    }
+
+
+
+
+                    // // Listener for identification of cell to move in
+                    // document.querySelector('#board').addEventListener('click', function(f) {
+                    //     targetID = f.target.closest('div').id;
+                    //     targetID = targetID.slice(3);
+                    //     legalTargetPositions = dataBase.legalMoves[prevChosenID];
+                    //     if (legalTargetPositions.includes(targetID) && legalInitialPositions.includes(selectedID)) {
+                    //         legalTargetPositions = [];
+                    //         console.log('move!!!!!!!!');
                             
-                        }
-                    });
+                    //     }
+                    // });
                     
                 } else {
-                    // console.log('Move is impossible');
+                    console.log('Move is impossible');
+                    console.log(`______________________`);
                 }
                 
 
