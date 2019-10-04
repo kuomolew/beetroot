@@ -6,7 +6,7 @@ let dataController = (function() {
         //Positions of black and white chekers
         black: [],
         white: [],
-        activePlayer: 'black',
+        activePlayer: 'white',
 
         //All theoretical moves for active player, without calculating of position of another chekers on the board
         posblMoves: {},
@@ -45,12 +45,10 @@ let dataController = (function() {
                 }
             }
         }
-        dataBase.black.push('black');
-        dataBase.white.push('white');
     };
 
 
-    //Cheking possible moves for the white one
+    //Cheking possible moves for the current player
     let possibleMoves = function(db) {
 
         if (db.activePlayer === 'white') {
@@ -145,57 +143,6 @@ let dataController = (function() {
         
     };
 
-    let movingEventsListener = function() {
-        var clickedID,  selectedID;
-        let legalInitialPositions = [];
-        let legalTargetPositions = [];
-
-        selectedID = -1;
-        // Listener for identification of chosen checker
-        document.querySelector('#board').addEventListener('click', function(e){  
-            clickedID = e.target.closest('div').id;
-            clickedID = clickedID.slice(3);
-            
-            
-            console.log(`clickedID = ${clickedID}`);
-            console.log(`selectedID = ${selectedID}`);
-            console.log(`legalTargetPositions = ${legalTargetPositions} _________________`);
-
-            if (legalTargetPositions.includes(clickedID) && legalInitialPositions.includes(selectedID)) {
-                // console.log(`MOOOOOOOOOOOOOOVE`);
-                dataBaseMove(selectedID, clickedID);
-                
-            }
-
-
-            for (key in dataBase.legalMoves) {
-                legalInitialPositions.push(key);
-            }
-
-
-            if(clickedID) {
-                if (legalInitialPositions.includes(clickedID)) {
-                    console.log(`Move is possible with this checker`);
-                    selectedID = clickedID;
-                    legalTargetPositions = dataBase.legalMoves[selectedID];
-
-                    console.log(`clickedID = ${clickedID}`);
-                    console.log(`selectedID = ${selectedID}`);
-                    console.log(`legalTargetPositions = ${legalTargetPositions} _________________`);
-                
-                    
-                } else {
-                    console.log('Move is impossible');
-                    console.log(`______________________`);
-                }
-            }
-          });
-        
-    };
-
-    let dataBaseMove = function(a, b) {
-        console.log(`Moving from ${a} to ${b} `);
-    }
     
     return {
         // Setting initial position for the game start in the database
@@ -215,17 +162,18 @@ let dataController = (function() {
 
         calculateMoves: function() {
             possibleMoves(dataBase);
-            console.log(dataBase.posblMoves);
         },
 
         calculateLegalMoves: function() {
             checkLegalMoves(dataBase);
-            // console.log(dataBase.legalMoves);
         },
 
-        movingEventsListen: function() {
-            movingEventsListener();
-        },
+        //Changing cheker's positions inside of database
+        dataBaseMove: function (a, b) {
+            let checkers = dataBase[dataBase.activePlayer];
+            checkers.splice(checkers.indexOf(a), 1);
+            checkers.push(b);
+        }, 
 
         testing: function() {
             console.log(dataBase);
@@ -259,7 +207,7 @@ let UIController = (function() {
             document.getElementById(element).classList.remove('hidden');
         },
 
-        // Hiding all checkers without database influence!!!
+        // Removing all checkers images without database influence!!!
         clearBord: function() {
             let dataBase = dataController.getDataBase();
             let totalCheckersNumber = dataBase.white.length + dataBase.black.length;
@@ -270,19 +218,22 @@ let UIController = (function() {
             
         },
         
-        // Showing checkers of one color on the board according to its database initial position
-        displayInitialPosition: function(color) {
-            let totalCheckersCount = color.length - 1;
-            for (let i = 0; i < totalCheckersCount; i++) {
-                let id =  DOMstrings.cellPrefix + color[i];
+        // Showing all checkers on the board according to its database position
+        displayPosition: function() {
+            let black = dataController.getDataBase().black;
+            let white = dataController.getDataBase().white;
+
+            for (let i = 0; i < black.length; i++) {
+                let id =  DOMstrings.cellPrefix + black[i];
                 let field = document.getElementById(id);
-                if (color[totalCheckersCount] === 'black') {
-                    field.insertAdjacentHTML('afterbegin', DOMstrings.chekerBlackImage);
-                } else {
-                    field.insertAdjacentHTML('afterbegin', DOMstrings.chekerWhiteImage);
-                }
+                field.insertAdjacentHTML('afterbegin', DOMstrings.chekerBlackImage);
             }
-            color.pop();  
+
+            for (let i = 0; i < white.length; i++) {
+                let id =  DOMstrings.cellPrefix + white[i];
+                let field = document.getElementById(id);
+                field.insertAdjacentHTML('afterbegin', DOMstrings.chekerWhiteImage);
+            }
         },
 
         // Returning list of domstrings
@@ -300,31 +251,82 @@ let controller = (function(dataCtrl, UICtrl) {
     let DOM = UICtrl.getDOMstrings();
     let db = dataCtrl.getDataBase();
 
-    let moveBegin = function (id) {
-        console.log('move on ' + id);
-    }
 
     // Awaiting listeners for buttons pushing
     let setupEventsListener = function() {
-        
         document.getElementById(DOM.startButton).addEventListener('click', startGame);
         document.getElementById(DOM.restartButton).addEventListener('click', restartGame);
         document.getElementById(DOM.clearButton).addEventListener('click', UICtrl.clearBord);
+    };
+
+
+    //Awaiting listeners for inside of boar alerts
+    let movingEventsListener = function() {
+        var clickedID,  selectedID;
+        let legalInitialPositions = [];
+        let legalTargetPositions = [];
+
+        selectedID = -1;
+
+        // Listener for identification of chosen checker
+        document.getElementById('board').addEventListener('click', function(e){  
+            clickedID = e.target.closest('div').id;
+            clickedID = clickedID.slice(3);
+
+
+            //If chosen checker is able to move in this position we are moving
+            if (legalTargetPositions.includes(clickedID) && legalInitialPositions.includes(selectedID)) {
+                
+                //Write this move to database
+                dataCtrl.dataBaseMove(selectedID, clickedID);
+
+                //Set values to 0 before next move
+                clickedID = selectedID =  -1;
+                legalInitialPositions = [];
+                legalTargetPositions = [];
+
+                //Refresh bord display
+                UICtrl.clearBord();
+                UICtrl.displayPosition();
+
+                //Changing of active player
+                dataCtrl.changeActivePlayer();
+
+                // Calculate moves for the next player
+                dataCtrl.calculateMoves();
+                dataCtrl.calculateLegalMoves();
+            }
+
+
+            for (key in db.legalMoves) {
+                legalInitialPositions.push(key);
+            }
+
+
+            if(clickedID) {
+                //If chosen cheker is able to move we are saving it's coordinates and waiting for valid position where to move
+                if (legalInitialPositions.includes(clickedID)) {
+                    selectedID = clickedID;
+                    legalTargetPositions = db.legalMoves[selectedID];
+                }
+            }
+          });
+        
     };
 
     // Starting the game with standart positioning
     let startGame = function() {
         
         dataCtrl.setInitialArrangement();
-        UICtrl.displayInitialPosition(db.black);
-        UICtrl.displayInitialPosition(db.white);
-        // console.log(db);
+        UICtrl.displayPosition();
         UICtrl.hideElement(DOM.startButton);
         UICtrl.showElement(DOM.restartButton);
         UICtrl.showElement(DOM.clearButton);
         dataCtrl.calculateMoves();
         dataCtrl.calculateLegalMoves();
-        dataCtrl.movingEventsListen();
+        movingEventsListener();
+        
+        
     }
 
     // Reloading the page
@@ -338,11 +340,6 @@ let controller = (function(dataCtrl, UICtrl) {
             setupEventsListener();
         }, 
 
-        // movingListener: function() {
-        //     console.log('movingListener on');
-            
-        // }
-
     }
 
 }) (dataController, UIController);
@@ -350,14 +347,3 @@ let controller = (function(dataCtrl, UICtrl) {
 
 
 controller.init();
-// controller.movingListener();
-
-// dataController.setInitialArrangement();
-// // dataController.testing();
-
-// let db = dataController.getDataBase();
-// console.log(db);
-// UIController.displayInitialPosition(db.black);
-// UIController.displayInitialPosition(db.white);
-
-// console.log(db);
