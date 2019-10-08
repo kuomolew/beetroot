@@ -1,7 +1,7 @@
 // Data controller
 let dataController = (function() {
 
-    //Position of all chekers on the board
+    //General database
     let dataBase = {
         //Positions of black and white chekers
         black: [],
@@ -283,12 +283,12 @@ let controller = (function(dataCtrl, UICtrl) {
                 //Write this move to database
                 dataCtrl.dataBaseMove(selectedID, clickedID);
 
-                //Set values to 0 before next move
+                //Set values to default before next move
                 clickedID = selectedID =  -1;
                 legalInitialPositions = [];
                 legalTargetPositions = [];
 
-                //Refresh bord display
+                //Refresh board display
                 UICtrl.clearBord();
                 UICtrl.displayPosition();
 
@@ -341,7 +341,7 @@ let controller = (function(dataCtrl, UICtrl) {
         init: function() {
             console.log('It\'s alive...');
             setupEventsListener();
-        }, 
+        }
 
     }
 
