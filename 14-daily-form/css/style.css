@@ -1,0 +1,116 @@
+.form-page {
+    width: 800px;
+    height: 600px;
+    background-image: linear-gradient(29deg, #ff512f 0%, #dd2476 100%);
+    margin: 0 auto;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #7a7b7f;
+}
+
+.form-page a {
+    color: #ea355a;
+    text-decoration: none;
+}
+
+.form-itself {
+    width: 460px;
+    height: 470px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background-color: #ffffff;
+    margin: 0 auto; 
+    margin-top: 61px;
+}
+
+.form-content {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.form-header {
+    margin-top: 27px;
+}
+
+.form-header object {
+    float: left;
+}
+
+#form-header-img {
+    width: 24px;
+    height: 24px;
+    background-image: url('../img/sign_up_icon.png');
+}
+
+.form-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #1b1c1d;
+    padding-left: 35px;
+    padding-top: 3px;
+}
+
+.form-content p {
+    padding-top: 16px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 30px;
+}
+
+.form-content input {
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    border: none;
+    margin-bottom: 15px;
+}
+
+.form-content ::placeholder {
+    color: #7a7b7f;
+    padding-left: 15px;
+}
+
+.form-content input[type="text"] {
+    width: 193px;
+    height: 40px;
+}
+
+.form-content input[type="text"]:nth-child(1) {
+    margin-right: 14px;
+}
+
+.form-content input[type="email"],
+.form-content input[type="password"] {
+    width: 400px;
+    height: 40px;
+}
+
+.form-content button {
+    width: 400px;
+    height: 50px;
+    box-shadow: 0 3px 0 #bd1962;
+    background-color: #ea355a;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.form-policies {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-top: 5px;
+}
+
+
+
+/* Style for "sign up ic" */
