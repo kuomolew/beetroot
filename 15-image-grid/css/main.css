@@ -1,0 +1,12 @@
+main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.first-line {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    /* overflow: hidden; */
+}
