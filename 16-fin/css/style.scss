@@ -1,0 +1,38 @@
+@import 'reset';
+@import 'fonts';
+@import 'vars';
+
+body {
+    background-color: #f00;
+    font-family: $font-text;
+    color: $text-color-light;
+}
+
+.why {
+    width: 100%;
+    height: 1955px;
+    background-color: $background-dark;
+
+    .why__content {
+        max-width: 1230px;
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 115px;
+
+        h1 {
+            font-family: $font-header;
+            font-size: 56px;
+            text-transform: capitalize;
+            text-align: center;
+            padding-bottom: 37px;
+        }
+    
+        h2 {
+            font-size: 32px;
+            text-align: center;
+            line-height: 42px;
+        }
+
+    
+    }
+}

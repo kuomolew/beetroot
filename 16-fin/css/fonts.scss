@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Muller-Medium'; /* Имя шрифта */
+    src: url(../fonts/Muller-Medium.otf); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: 'Muller-Regular'; /* Имя шрифта */
+    src: url(../fonts/Muller-Regular.ttf); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: 'Marks'; /* Имя шрифта */
+    src: url(../fonts/TTMarks-Thin.ttf); /* Путь к файлу со шрифтом */
+}
+
+$font-text: 'Muller-Regular', sans-serif;
+$font-header: 'Muller-Medium', sans-serif;
+
+$font-test: 'Marks';

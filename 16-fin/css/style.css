@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-weight: normal;
+    font-style: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+abbr, acronym {
+    border: 0;
+}
+
+html {
+    height: 100%;
+}
+
+@font-face {
+    font-family: 'Muller-Medium';
+  /* Имя шрифта */
+  src: url(../fonts/Muller-Medium.otf);
+  /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: 'Muller-Regular';
+  /* Имя шрифта */
+  src: url(../fonts/Muller-Regular.ttf);
+  /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+    font-family: 'Marks';
+  /* Имя шрифта */
+  src: url(../fonts/TTMarks-Thin.ttf);
+  /* Путь к файлу со шрифтом */
+}
+
+body {
+    background-color: #f00;
+    font-family: "Muller-Regular", sans-serif;
+    color: #ffffff;
+}
+
+.why {
+    width: 100%;
+    height: 1955px;
+    background-color: #00406d;
+}
+
+.why .why__content {
+    max-width: 1230px;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 115px;
+}
+
+.why .why__content h1 {
+    font-family: "Muller-Medium", sans-serif;
+    font-size: 56px;
+    text-transform: capitalize;
+    text-align: center;
+    padding-bottom: 37px;
+}
+
+.why .why__content h2 {
+    font-size: 32px;
+    text-align: center;
+    line-height: 42px;
+}
