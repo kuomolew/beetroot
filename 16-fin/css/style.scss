@@ -33,6 +33,78 @@ body {
             line-height: 42px;
         }
 
+        .why__steps {
+            padding-top: 18px;
+            max-width: 1230px;
+            width: 100%;
+            height: 422px;
+            display: flex;
+//color:red;
+            .why__steps__text {
+                width: 61%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                font-size: 22px;
+                line-height: 1.2727;
+
+                .why__steps__step {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+
+                    .why__steps__time {
+                        width: 140px;
+                        display: flex;
+                        align-items: center;
+                        //border: 1px solid white;
+                    }
+
+                    p {
+                        width: 550px;
+                        
+                    }
+                }
+
+                .why__steps__arrow {
+                    height: 20 + 18*2px;
+                    background-image: url('../img/why-arrow.png');
+                    background-position: 19% 50%;
+                    background-repeat: no-repeat;
+                }
+            }
+
+            .why__steps__photo {
+                max-width: 399px;
+                width: 35%;
+                //background-color: #fff;
+                background-image: url('../img/why-bg.png');
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+                background-position: center;
+
+            }
+        }
+
     
     }
+}
+.second {
+    padding-bottom: 100px;
+}
+.sub-menu 
+{ 
+   display: none; 
+} 
+.main-item:focus ~ .sub-menu, 
+.main-item:active ~ .sub-menu, 
+.sub-menu:hover 
+{ 
+   display: block; 
+} 
+
+.third {
+    background-color: rosybrown;
+    height: 200px;
+    border: 1px solid white;
 }
